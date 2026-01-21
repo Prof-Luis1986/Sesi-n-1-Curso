@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guía del Alumno + Practicario — Flet</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --ink:#e6edf7;
+      --muted:#b8c4d6;
+      --accent:#38bdf8;
+      --line:#1c2a4a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    header{
+      padding:24px 16px;
+      background:linear-gradient(180deg, #071022, #0b1220);
+      border-bottom:2px solid var(--line);
+      text-align:center;
+    }
+    header h1{margin:0; color:var(--accent); font-size:1.6rem;}
+    header p{margin:8px 0 0; color:var(--muted);}
+    main{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 14px 40px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+    @media(min-width: 900px){
+      .grid{grid-template-columns: 1fr 1fr;}
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    h2{
+      margin:0 0 8px;
+      color:var(--accent);
+      font-size:1.2rem;
+    }
+    h3{
+      margin:16px 0 8px;
+      color:#7dd3fc;
+      font-size:1.05rem;
+    }
+    .muted{color:var(--muted)}
+    .pill{
+      display:inline-block;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      margin: 4px 6px 0 0;
+      font-size:.9rem;
+    }
+    ul{margin:8px 0 0 18px;}
+    li{margin:6px 0;}
+    code{
+      color:var(--accent);
+      background:#071022;
+      padding:2px 6px;
+      border-radius:6px;
+    }
+    pre{
+      background:#071022;
+      border:1px solid var(--line);
+      border-left:4px solid var(--accent);
+      padding:12px;
+      border-radius:10px;
+      overflow:auto;
+      margin:10px 0;
+    }
+    .checklist label{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:8px 10px;
+      background:#071022;
+      border:1px solid var(--line);
+      border-radius:10px;
+      margin:8px 0;
+      cursor:pointer;
+    }
+    .checklist input{margin-top:3px;}
+    .hint{
+      background:#071022;
+      border:1px dashed var(--line);
+      border-radius:10px;
+      padding:10px;
+      color:var(--muted);
+      margin-top:10px;
+    }
+    footer{
+      text-align:center;
+      padding:18px 12px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      background:#071022;
+    }
+    .badge{
+      font-weight:bold;
+      color:#9ae6ff;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Guía del Alumno + Practicario — Introducción a Flet</h1>
+    <p>Hoy vas a instalar Flet, ejecutar tu primera app y crear 5 prácticas con evidencias.</p>
+    <div style="margin-top:10px;">
+      <span class="pill">Duración: 150 min</span>
+      <span class="pill">Producto: 5 apps + evidencias</span>
+      <span class="pill">Herramientas: Python + VS Code</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <section class="card">
+        <h2>🎯 Lo que vas a lograr hoy</h2>
+        <ul>
+          <li>Instalar Flet en tu computadora con un entorno virtual.</li>
+          <li>Entender qué son <span class="badge">controles</span> (Text, Button, TextField) y <span class="badge">eventos</span> (click).</li>
+          <li>Crear apps que respondan a tus acciones (interactivas).</li>
+          <li>Entregar evidencias claras (capturas + código).</li>
+        </ul>
+
+        <div class="hint">
+          <strong>Regla de oro:</strong> si cambias algo en pantalla, casi siempre debes ejecutar <code>page.update()</code>.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>🧰 Antes de empezar</h2>
+        <p class="muted">Asegúrate de tener lo siguiente:</p>
+        <ul>
+          <li>Python instalado (recomendado 3.10+).</li>
+          <li>Editor de código: VS Code (o similar).</li>
+          <li>Terminal: la que viene en tu sistema o en VS Code.</li>
+        </ul>
+
+        <h3>📌 Checklist rápido</h3>
+        <div class="checklist">
+          <label><input type="checkbox">Ya abrí VS Code</label>
+          <label><input type="checkbox">Ya creé una carpeta para la práctica</label>
+          <label><input type="checkbox">Ya abrí la terminal dentro de la carpeta</label>
+        </div>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2>🧪 Preparación del entorno (paso a paso)</h2>
+        <ol>
+          <li>En tu carpeta de trabajo, crea un entorno virtual:</li>
+        </ol>
+        <pre>python -m venv .venv</pre>
+
+        <ol start="2">
+          <li>Activa el entorno virtual:</li>
+        </ol>
+        <pre>
+# Windows:
+.venv\Scripts\activate
+
+# macOS / Linux:
+source .venv/bin/activate
+        </pre>
+
+        <ol start="3">
+          <li>Instala Flet:</li>
+        </ol>
+        <pre>pip install flet</pre>
+
+        <ol start="4">
+          <li>Verifica la instalación:</li>
+        </ol>
+        <pre>pip show flet</pre>
+
+        <div class="hint">
+          <strong>Si algo falla:</strong> revisa que activaste el entorno virtual. Si no está activado, <code>pip</code> puede instalar en otro lugar.
+        </div>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2>📕 Practicario (lo que tienes que hacer y entregar)</h2>
+        <p class="muted">
+          Crea una carpeta llamada <code>flet_practicario</code> y dentro guarda tus archivos como:
+          <code>p1.py</code>, <code>p2.py</code>... <code>p5.py</code>.
+        </p>
+
+        <h3>✅ Evidencias obligatorias (para cada práctica)</h3>
+        <ul>
+          <li>1 captura de pantalla de la app funcionando.</li>
+          <li>El archivo <code>.py</code> con tu código.</li>
+          <li>Una explicación corta (2-3 líneas): ¿qué hace tu app?</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Práctica 1 — “Flet vive” (15 min)</h2>
+        <p><strong>Tu misión:</strong> ejecutar una app mínima que muestre un texto.</p>
+        <pre>import flet as ft
+
+def main(page: ft.Page):
+    page.add(ft.Text("Flet funcionando correctamente"))
+
+ft.run(main)</pre>
+        <p><strong>Entrega:</strong> captura + <code>p1.py</code></p>
+      </section>
+
+      <section class="card">
+        <h2>Práctica 2 — Texto + botón (20 min)</h2>
+        <p><strong>Tu misión:</strong> un botón debe cambiar el texto.</p>
+        <pre>import flet as ft
+
+def main(page: ft.Page):
+    texto = ft.Text("Texto original")
+
+    def cambiar(e):
+        texto.value = "Texto modificado"
+        page.update()
+
+    page.add(
+        texto,
+        ft.ElevatedButton("Cambiar texto", on_click=cambiar)
+    )
+
+ft.run(main)</pre>
+        <h3>📌 Responde (en 2 líneas)</h3>
+        <ul>
+          <li>¿Para qué sirve <code>on_click</code>?</li>
+          <li>¿Por qué usamos <code>page.update()</code>?</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Práctica 3 — Contador (25 min)</h2>
+        <p><strong>Tu misión:</strong> sumar y restar un número con botones.</p>
+        <pre>import flet as ft
+
+def main(page: ft.Page):
+    contador = ft.Text("0", size=30)
+
+    def sumar(e):
+        contador.value = str(int(contador.value) + 1)
+        page.update()
+
+    def restar(e):
+        contador.value = str(int(contador.value) - 1)
+        page.update()
+
+    page.add(
+        contador,
+        ft.Row([
+            ft.ElevatedButton("➖", on_click=restar),
+            ft.ElevatedButton("➕", on_click=sumar),
+        ])
+    )
+
+ft.run(main)</pre>
+
+        <h3>🔥 Reto extra</h3>
+        <ul>
+          <li>Agrega un botón <strong>Reiniciar</strong> que regrese a 0.</li>
+        </ul>
+        <p><strong>Entrega:</strong> captura + <code>p3.py</code></p>
+      </section>
+
+      <section class="card">
+        <h2>Práctica 4 — TextField (20 min)</h2>
+        <p><strong>Tu misión:</strong> capturar un nombre y saludar.</p>
+        <pre>import flet as ft
+
+def main(page: ft.Page):
+    entrada = ft.TextField(label="Escribe tu nombre")
+    salida = ft.Text("")
+
+    def saludar(e):
+        salida.value = f"Hola {entrada.value}"
+        page.update()
+
+    page.add(
+        entrada,
+        ft.ElevatedButton("Saludar", on_click=saludar),
+        salida
+    )
+
+ft.run(main)</pre>
+
+        <h3>📌 Responde (en 2 líneas)</h3>
+        <ul>
+          <li>¿Qué pasa si el usuario no escribe nada?</li>
+          <li>¿Cómo podrías validar que no esté vacío?</li>
+        </ul>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2>Práctica 5 — Mini reto integrador (30 min)</h2>
+        <p><strong>Tu misión:</strong> crear una mini app libre con Flet.</p>
+
+        <h3>✅ Debe incluir mínimo:</h3>
+        <ul>
+          <li>2 controles (por ejemplo: Text + Button / TextField + Button)</li>
+          <li>1 evento (por ejemplo: <code>on_click</code>)</li>
+          <li>Cambio visible en pantalla (usa <code>page.update()</code>)</li>
+        </ul>
+
+        <h3>💡 Ideas rápidas</h3>
+        <ul>
+          <li>Calculadora básica (suma/resta)</li>
+          <li>Lista de tareas simple (agregar y limpiar)</li>
+          <li>Registro de “asistencia” (nombre + botón agregar)</li>
+        </ul>
+
+        <h3>📦 Entrega</h3>
+        <ul>
+          <li>Captura + <code>p5.py</code></li>
+          <li>Descripción (5 líneas): ¿qué hace tu app y cómo se usa?</li>
+        </ul>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2>🧾 Evaluación</h2>
+        <ul>
+          <li>Funciona (no truena y hace lo que se pide): <strong>40%</strong></li>
+          <li>Uso correcto de controles y eventos: <strong>30%</strong></li>
+          <li>Evidencias completas (capturas + archivos): <strong>20%</strong></li>
+          <li>Explicaciones cortas y claras: <strong>10%</strong></li>
+        </ul>
+
+        <div class="hint">
+          <strong>Tip:</strong> Si tu app no se ve, revisa que estés llamando a <code>ft.run(main)</code> y que el código no tenga errores en consola.
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    Material para el alumno — Flet con Python • Guarda este archivo como <code>index.html</code>
+  </footer>
+</body>
+</html>
