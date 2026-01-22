@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Guia de Trabajo + Practicario — Practica 02 IMC</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --ink:#e6edf7;
+      --muted:#b8c4d6;
+      --accent:#38bdf8;
+      --line:#1c2a4a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+    header{
+      padding:24px 16px;
+      background:linear-gradient(180deg, #071022, #0b1220);
+      border-bottom:2px solid var(--line);
+      text-align:center;
+    }
+    header h1{margin:0; color:var(--accent); font-size:1.6rem;}
+    header p{margin:8px 0 0; color:var(--muted);}
+    main{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 14px 40px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+    @media(min-width: 900px){
+      .grid{grid-template-columns: 1fr 1fr;}
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    h2{
+      margin:0 0 8px;
+      color:var(--accent);
+      font-size:1.2rem;
+    }
+    h3{
+      margin:16px 0 8px;
+      color:#7dd3fc;
+      font-size:1.05rem;
+    }
+    .muted{color:var(--muted)}
+    .pill{
+      display:inline-block;
+      padding:6px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      margin: 4px 6px 0 0;
+      font-size:.9rem;
+    }
+    ul, ol{margin:8px 0 0 18px;}
+    li{margin:6px 0;}
+    code{
+      color:var(--accent);
+      background:#071022;
+      padding:2px 6px;
+      border-radius:6px;
+    }
+    pre{
+      background:#071022;
+      border:1px solid var(--line);
+      border-left:4px solid var(--accent);
+      padding:12px;
+      border-radius:10px;
+      overflow:auto;
+      margin:10px 0;
+    }
+    .checklist label{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:8px 10px;
+      background:#071022;
+      border:1px solid var(--line);
+      border-radius:10px;
+      margin:8px 0;
+      cursor:pointer;
+    }
+    .checklist input{margin-top:3px;}
+    .hint{
+      background:#071022;
+      border:1px dashed var(--line);
+      border-radius:10px;
+      padding:10px;
+      color:var(--muted);
+      margin-top:10px;
+    }
+    footer{
+      text-align:center;
+      padding:18px 12px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      background:#071022;
+    }
+    .badge{
+      font-weight:bold;
+      color:#9ae6ff;
+    }
+    .table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:.95rem;
+    }
+    .table th, .table td{
+      border:1px solid var(--line);
+      padding:8px 10px;
+      text-align:left;
+    }
+    .table th{color:#9ae6ff;}
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Guia de Trabajo + Practicario — Practica 02: IMC</h1>
+    <p>Calcula el Indice de Masa Corporal con Flet y entrega evidencias claras.</p>
+    <div style="margin-top:10px;">
+      <span class="pill">Duracion: 120 min</span>
+      <span class="pill">Producto: App IMC + evidencias</span>
+      <span class="pill">Herramientas: Python + Flet</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <section class="card">
+        <h2>Objetivo de la practica</h2>
+        <ul>
+          <li>Crear una app que calcule el <span class="badge">IMC</span>.</li>
+          <li>Validar datos de entrada (peso y altura).</li>
+          <li>Mostrar el resultado y su categoria.</li>
+          <li>Generar evidencia completa (capturas + codigo).</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Antes de empezar</h2>
+        <p class="muted">Asegurate de tener lo siguiente:</p>
+        <ul>
+          <li>Python y Flet instalados.</li>
+          <li>VS Code abierto con tu carpeta de trabajo.</li>
+          <li>Conocimientos basicos de TextField y Button.</li>
+        </ul>
+
+        <h3>Checklist rapido</h3>
+        <div class="checklist">
+          <label><input type="checkbox">Carpeta creada para la practica</label>
+          <label><input type="checkbox">Entorno virtual activado</label>
+          <label><input type="checkbox">Archivo <code>imc.py</code> listo</label>
+        </div>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2>Concepto clave: formula del IMC</h2>
+        <p class="muted">El IMC se calcula con la formula:</p>
+        <pre>IMC = peso(kg) / (altura(m) ** 2)</pre>
+
+        <h3>Clasificacion basica</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Rango IMC</th>
+              <th>Categoria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Menor a 18.5</td>
+              <td>Bajo peso</td>
+            </tr>
+            <tr>
+              <td>18.5 a 24.9</td>
+              <td>Normal</td>
+            </tr>
+            <tr>
+              <td>25.0 a 29.9</td>
+              <td>Sobrepeso</td>
+            </tr>
+            <tr>
+              <td>30.0 o mas</td>
+              <td>Obesidad</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="hint">
+          <strong>Tip:</strong> redondea el IMC a 2 decimales con <code>round(valor, 2)</code>.
+        </div>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2>Guia de trabajo (paso a paso)</h2>
+        <ol>
+          <li>Crea dos <code>TextField</code>: peso (kg) y altura (m).</li>
+          <li>Agrega un boton <code>Calcular IMC</code>.</li>
+          <li>Al hacer click, convierte los valores a <code>float</code>.</li>
+          <li>Calcula el IMC y muestra resultado y categoria.</li>
+          <li>Valida que los campos no esten vacios y sean positivos.</li>
+        </ol>
+        <pre>import flet as ft
+
+def main(page: ft.Page):
+    peso = ft.TextField(label="Peso (kg)")
+    altura = ft.TextField(label="Altura (m)")
+    resultado = ft.Text("")
+    categoria = ft.Text("")
+
+    def calcular(e):
+        try:
+            p = float(peso.value)
+            a = float(altura.value)
+            if p <= 0 or a <= 0:
+                raise ValueError
+            imc = round(p / (a ** 2), 2)
+            resultado.value = f"IMC: {imc}"
+            if imc &lt; 18.5:
+                categoria.value = "Categoria: Bajo peso"
+            elif imc &lt; 25:
+                categoria.value = "Categoria: Normal"
+            elif imc &lt; 30:
+                categoria.value = "Categoria: Sobrepeso"
+            else:
+                categoria.value = "Categoria: Obesidad"
+        except ValueError:
+            resultado.value = "Datos invalidos. Usa numeros positivos."
+            categoria.value = ""
+        page.update()
+
+    page.add(
+        peso,
+        altura,
+        ft.ElevatedButton("Calcular IMC", on_click=calcular),
+        resultado,
+        categoria
+    )
+
+ft.run(main)</pre>
+      </section>
+
+      <section class="card">
+        <h2>Practicario — Parte A (obligatoria)</h2>
+        <ul>
+          <li>Crear la app IMC con dos campos y un boton.</li>
+          <li>Mostrar el IMC con 2 decimales.</li>
+          <li>Mostrar la categoria correspondiente.</li>
+          <li>Validar que los datos sean numeros positivos.</li>
+        </ul>
+        <p><strong>Entrega:</strong> captura + <code>imc.py</code></p>
+      </section>
+
+      <section class="card">
+        <h2>Practicario — Parte B (reto)</h2>
+        <ul>
+          <li>Agregar un boton <strong>Limpiar</strong> que borre campos.</li>
+          <li>Mostrar un color distinto segun categoria.</li>
+          <li>Agregar un mensaje de recomendacion corta.</li>
+        </ul>
+        <p><strong>Entrega:</strong> captura + <code>imc.py</code> actualizado</p>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2>Preguntas del tema (responde en tu cuaderno)</h2>
+        <ol>
+          <li>Escribe la formula del IMC y explica que significan sus variables.</li>
+          <li>Por que se usa la altura en metros al cuadrado?</li>
+          <li>Que unidades deben tener el peso y la altura para que el IMC sea correcto?</li>
+          <li>En que rango se considera "Normal" y que significa esa categoria?</li>
+          <li>Que validaciones minimas debe tener la app para evitar errores?</li>
+          <li>Como puedes redondear el resultado a 2 decimales en Python?</li>
+        </ol>
+      </section>
+
+      <section class="card" style="grid-column: 1 / -1;">
+        <h2>Evidencias y evaluacion</h2>
+        <h3>Evidencias obligatorias</h3>
+        <ul>
+          <li>1 captura de pantalla de la app funcionando.</li>
+          <li>Archivo <code>imc.py</code> con codigo limpio.</li>
+          <li>Descripcion corta (3-4 lineas) de tu app.</li>
+        </ul>
+        <h3>Evaluacion</h3>
+        <ul>
+          <li>Funciona y calcula bien el IMC: <strong>40%</strong></li>
+          <li>Validacion y manejo de errores: <strong>25%</strong></li>
+          <li>Interfaz clara y ordenada: <strong>20%</strong></li>
+          <li>Evidencias completas: <strong>15%</strong></li>
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    Material para el alumno — Practica 02 IMC • Guarda este archivo como <code>practica-02-imc.html</code>
+  </footer>
+</body>
+</html>
