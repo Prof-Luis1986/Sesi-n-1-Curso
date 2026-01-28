@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Padres de la Informática — Guía de Trabajo</title>
+  <style>
+    :root{
+      --bg-1:#0a0f1f;
+      --bg-2:#0d1b2a;
+      --ink:#f2f5fb;
+      --muted:#b5c2d6;
+      --accent:#ff7a59;
+      --accent-2:#7dd3fc;
+      --card:#121a2f;
+      --line:#223055;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Space Grotesk","Segoe UI",Arial,Helvetica,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 480px at 10% 10%, #172446 0%, transparent 60%),
+        radial-gradient(700px 420px at 90% 0%, #1b2f56 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      line-height:1.6;
+    }
+    header{
+      padding:30px 18px 22px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,122,89,.12), transparent 65%);
+      text-align:center;
+    }
+    header h1{
+      margin:0;
+      font-size:1.9rem;
+      color:var(--accent);
+      letter-spacing:.2px;
+    }
+    header p{margin:8px 0 0; color:var(--muted);}
+    .pill{
+      display:inline-block;
+      padding:6px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:var(--muted);
+      margin:8px 6px 0 0;
+      font-size:.9rem;
+      background:#0b1326;
+    }
+    main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:18px 16px 44px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    @media(min-width: 980px){
+      .grid{grid-template-columns:1fr 1fr;}
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:16px;
+      box-shadow:0 16px 35px rgba(0,0,0,.28);
+    }
+    h2{
+      margin:0 0 8px;
+      color:var(--accent-2);
+      font-size:1.25rem;
+    }
+    h3{
+      margin:14px 0 6px;
+      color:#9ae6ff;
+      font-size:1.05rem;
+    }
+    ul{margin:8px 0 0 18px;}
+    li{margin:6px 0;}
+    code{
+      color:var(--accent-2);
+      background:#0b1326;
+      padding:2px 6px;
+      border-radius:6px;
+    }
+    pre{
+      background:#0b1326;
+      border:1px solid var(--line);
+      border-left:4px solid var(--accent);
+      padding:12px;
+      border-radius:10px;
+      overflow:auto;
+      margin:10px 0;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:8px;
+      font-size:.95rem;
+    }
+    th, td{
+      border:1px solid var(--line);
+      padding:10px;
+      text-align:left;
+      vertical-align:top;
+    }
+    th{color:#ffd5c8; background:#0f1a33;}
+    .muted{color:var(--muted);}
+    .full{grid-column:1 / -1;}
+    .note{
+      padding:10px;
+      border:1px dashed var(--line);
+      border-radius:10px;
+      background:#0b1326;
+      color:var(--muted);
+    }
+    footer{
+      text-align:center;
+      padding:18px 12px;
+      color:var(--muted);
+      border-top:1px solid var(--line);
+      background:#0b1326;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Padres de la Informática — Aplicación Interactiva con Flet</h1>
+    <p>Guía de trabajo integral para investigación, creación audiovisual y desarrollo en Flet.</p>
+    <div>
+      <span class="pill">Producto: App + documentación</span>
+      <span class="pill">Equipo: 5 integrantes</span>
+      <span class="pill">Entrega: Presentación final</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid">
+      <section class="card">
+        <h2>💡 Propósito General</h2>
+        <p>Desarrollar una aplicación interactiva en Python y Flet que muestre videos informativos sobre los padres de la informática, integrando investigación documental, creación de material audiovisual con IA, programación visual, trabajo colaborativo y documentación técnica profesional.</p>
+      </section>
+
+      <section class="card">
+        <h2>🎯 Objetivos de Aprendizaje</h2>
+        <ul>
+          <li>Investigar la vida y aportaciones de los principales pioneros de la informática.</li>
+          <li>Desarrollar una aplicación interactiva con Python, Flet y flet-video.</li>
+          <li>Aplicar diseño visual, estructuración de datos y documentación técnica.</li>
+          <li>Fortalecer el trabajo colaborativo mediante roles definidos y responsabilidad compartida.</li>
+          <li>Presentar los resultados mediante una exposición formal y un producto funcional.</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>👥 Organización del Equipo</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Rol</th>
+              <th>Responsabilidades principales</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Líder de Proyecto y Curador de Contenido</td>
+              <td>Define el alcance, cronograma y entregables. Coordina al equipo, revisa calidad del contenido y verifica coherencia temática.</td>
+            </tr>
+            <tr>
+              <td>Diseñador/a UX/UI</td>
+              <td>Estructura la información, diseña wireframes y prototipos. Define estilo visual y asegura accesibilidad (contraste, navegación, alt text).</td>
+            </tr>
+            <tr>
+              <td>Desarrollador/a Frontend</td>
+              <td>Implementa las vistas y componentes con Flet. Integra diseño, optimiza rendimiento y corrige errores visuales.</td>
+            </tr>
+            <tr>
+              <td>Desarrollador/a Backend o Integrador de Datos</td>
+              <td>Prepara dataset de biografías y videos. Implementa lógica de búsqueda, filtrado o normalización de datos.</td>
+            </tr>
+            <tr>
+              <td>QA y Documentación Técnica</td>
+              <td>Planifica y ejecuta pruebas funcionales. Gestiona bugs y redacta manual técnico, manual de usuario y README.</td>
+            </tr>
+            <tr>
+              <td>DevOps/Infra y Publicación</td>
+              <td>Configura repositorio, versiones y despliegue en GitHub Pages o Sites. Supervisa backups y checklist de entrega.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card full">
+        <h2>🧠 Etapa 1: Investigación y Producción de Videos Vivientes</h2>
+        <p>Investiga en equipo al menos 6 personajes de la historia de la informática (3 incluidos y 3 nuevos). Crea videos vivientes de 30–60 segundos sobre cada personaje usando VisionStory.ai o herramientas similares. Los videos deben subirse a Google Drive o GitHub y generar enlaces directos para usarlos en Flet.</p>
+      </section>
+
+      <section class="card full">
+        <h2>💻 Etapa 2: Desarrollo Técnico con Flet</h2>
+        <p>Instala dependencias con el comando:</p>
+        <pre>pip install flet flet-video</pre>
+        <p>Configura los enlaces de tus videos nuevos y desarrolla la aplicación según la guía oficial disponible en:</p>
+        <p class="muted">https://sites.google.com/cetis50cdmx.com/framework/inicio/2do-parcial/práctica-10-reproductor-video</p>
+      </section>
+
+      <section class="card full">
+        <h2>🎨 Etapa 3: Documentación y Evidencias</h2>
+        <p>Cada equipo elaborará un Manual Técnico, un Manual de Usuario y un Video Demostrativo (2–3 minutos) mostrando la app en funcionamiento.</p>
+      </section>
+
+      <section class="card full">
+        <h2>🤝 Etapa 4: Presentación Final</h2>
+        <p>Este proyecto no forma parte del ABP, pero se desarrollará con los mismos equipos establecidos. Cada equipo deberá presentar su aplicación el 27 de octubre, mostrando su código, videos integrados y roles de trabajo.</p>
+      </section>
+
+      <section class="card full">
+        <h2>🧾 Evaluación (100 puntos)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Criterio</th>
+              <th>Puntos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Investigación y síntesis histórica</td><td>15</td></tr>
+            <tr><td>Creación de videos vivientes</td><td>15</td></tr>
+            <tr><td>Desarrollo técnico (Flet)</td><td>25</td></tr>
+            <tr><td>Diseño visual (UX/UI)</td><td>10</td></tr>
+            <tr><td>Documentación técnica y de usuario</td><td>15</td></tr>
+            <tr><td>Exposición final y trabajo en equipo</td><td>20</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>100</strong></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card full">
+        <h2>🧩 Notas Finales</h2>
+        <ul>
+          <li>Los personajes Babbage, Lovelace y Pascal ya están integrados; deberán agregar al menos tres personajes nuevos.</li>
+          <li>Pueden trabajar con más si el equipo lo considera.</li>
+          <li>Los videos deben ser originales o con narración propia, no solo imágenes.</li>
+          <li>Guarden versiones actualizadas del código y la documentación.</li>
+          <li>Recuerden subir todo al Sites o repositorio del equipo. Aquí no hay Google Sites, solo deben ser consistentes con las demás prácticas.</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>🧾 Código Base (Flet)</h2>
+        <pre>import flet as ft
+import flet_video as fv
+
+
+def main(page: ft.Page):
+    page.title = "Padres de la informatica"
+    page.bgcolor = ft.Colors.BLACK87
+
+    videos = [
+        {
+            "titulo": "Charles Babbage",
+            "descripcion": "Conocido como el padre de la computadora...",
+            "video": "https://drive.google.com/uc?export=download&amp;id=1lquy5gjxoZLasWd2SvL-PSynA4JW209"
+        },
+        {
+            "titulo": "Ada Lovelace",
+            "descripcion": "Ada Lovelace fue reconocida como la primera programadora.",
+            "video": "https://drive.google.com/uc?export=download&amp;id=1evn_myd6_yyNuXtXHt5r6eqJ4H2Qjgu6"
+        },
+        {
+            "titulo": "Blaise Pascal",
+            "descripcion": "Blaise Pascal fue matemático, fisico y filósofo francés...",
+            "video": "https://drive.google.com/uc?export=download&amp;id=1_fHCHd_vKIYKZvFOXWchRyDi1-HoRG"
+        }
+    ]
+
+    indice_actual = [0]
+    contenedor = ft.Container(width=700, height=600)
+
+    boton_anterior = ft.ElevatedButton("⏮ Anterior", width=150)
+    boton_siguiente = ft.ElevatedButton("Siguiente ⏭", width=150)
+
+    def mostrar_video():
+        vid = videos[indice_actual[0]]
+        contenedor.content = ft.Column(
+            [
+                fv.Video(
+                    expand=True,
+                    playlist=[fv.VideoMedia(vid["video"])],
+                    width=600,
+                    height=350,
+                    autoplay=True,
+                    show_controls=True,
+                ),
+                ft.Text(
+                    vid["titulo"],
+                    size=28,
+                    weight=ft.FontWeight.BOLD,
+                    color=ft.Colors.WHITE
+                ),
+                ft.Text(
+                    vid["descripcion"],
+                    size=16,
+                    italic=True,
+                    text_align=ft.TextAlign.CENTER,
+                    color=ft.Colors.WHITE70
+                ),
+                ft.Row(
+                    [boton_anterior, boton_siguiente],
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    spacing=40
+                )
+            ],
+            alignment=ft.MainAxisAlignment.CENTER,
+            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            spacing=15
+        )
+        page.update()
+
+    def anterior_click(e):
+        indice_actual[0] = (indice_actual[0] - 1) % len(videos)
+        mostrar_video()
+
+    def siguiente_click(e):
+        indice_actual[0] = (indice_actual[0] + 1) % len(videos)
+        mostrar_video()
+
+    boton_anterior.on_click = anterior_click
+    boton_siguiente.on_click = siguiente_click
+
+    page.add(
+        ft.Container(
+            expand=True,
+            alignment=ft.alignment.center,
+            content=contenedor
+        )
+    )
+
+    mostrar_video()
+
+
+ft.app(target=main)</pre>
+        <p class="note">Ajusta los enlaces de video y agrega los 3 personajes nuevos según tu investigación.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    Práctica integral — Padres de la Informática • Guarda este archivo como <code>index.html</code>
+  </footer>
+</body>
+</html>
